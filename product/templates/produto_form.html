@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="container">
+    <h1>Adicionar Produto</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button onclick="window.history.back()" class="btn btn-danger">Voltar</button>
+
+    </form>
+</div>
+
+{% else %}
+<h1>Por favor, efetue o <a href="{% url 'admin:login' %}?next=/">login</a> para acessar</h1>
+
+{% endif %}
+{% endblock %}
